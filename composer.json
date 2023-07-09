@@ -15,7 +15,8 @@
         "nrz/laravel-module-creator": "dev-master",
         "laravel/tinker": "^2.8",
         "nrz/user": "dev-master",
-        "nrz/base": "dev-master"
+        "nrz/base": "dev-master",
+        "nrz/customer": "dev-master"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -77,6 +78,10 @@
         {
             "type": "path",
             "url": "modules/Nrz/Base"
+        },
+        {
+            "type": "path",
+            "url": "modules/Nrz/Customer"
         }
     ]
 }
