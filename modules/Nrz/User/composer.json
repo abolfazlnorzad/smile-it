@@ -1,0 +1,15 @@
+{
+  "name": "nrz/user",
+  "autoload": {
+    "psr-4": {
+      "Nrz\\User\\" : "src"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Nrz\\User\\Providers\\UserServiceProvider"
+      ]
+    }
+  }
+}
