@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 use Nrz\User\Database\Factories\UserFactory;
+use Nrz\User\Traits\HasApiTokens;
 
 class User extends Authenticatable
 {

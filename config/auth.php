@@ -111,5 +111,9 @@ return [
     */
 
     'password_timeout' => 10800,
+    'jwt_cookie_name' => env('JWT_COOKIE_NAME', 'nrz_small_it'),
+
+    //  this time is second
+    'jwt_cookie_lifetime' => env('JWT_COOKIE_LIFETIME', 43200)
 
 ];

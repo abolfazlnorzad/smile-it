@@ -1,10 +1,12 @@
 <?php namespace Nrz\User\Providers;
 
 use Database\Seeders\DatabaseSeeder;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
 use Laravel\Sanctum\Sanctum;
+use Nrz\User\Contracts\UserProviderInterface;
 use Nrz\User\Database\Seeders\UserSeeder;
+use Nrz\User\Database\Repo\Mysql\MysqlUserProvider;
 use Nrz\User\Models\PersonalAccessToken;
 
 class UserServiceProvider extends ServiceProvider
@@ -20,6 +22,6 @@ class UserServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
+        $this->app->bindIf(UserProviderInterface::class , MysqlUserProvider::class);
     }
 }
