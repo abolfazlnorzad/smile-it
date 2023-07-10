@@ -19,7 +19,7 @@ class CreateAccountRequest extends FormRequest
             'name' => ['required', 'string', Rule::in([AccountNameEnum::GENERAL->value, AccountNameEnum::SILVER->value, AccountNameEnum::GOLD->value])],
             'customer_id'=>['required',Rule::exists('customers','id')],
             'balance'=>['required','numeric','between:7,1000000000'],
-            'bic'=>['required','max:7']
+            'bic'=>['required','numeric','between:1000,9999']
         ];
     }
 
