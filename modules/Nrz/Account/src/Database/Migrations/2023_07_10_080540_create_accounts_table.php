@@ -9,7 +9,7 @@ return new class extends Migration{
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->ulid('id')->primary();
-            $table->string('name',100)->default(\Nrz\Account\Enums\AccountNameEnum::General->value);
+            $table->string('name',100)->default(\Nrz\Account\Enums\AccountNameEnum::GENERAL->value);
             $table->string('account_number',30);
             $table->foreignUlid('customer_id')->constrained("customers","id")
                 ->cascadeOnDelete()->cascadeOnUpdate();

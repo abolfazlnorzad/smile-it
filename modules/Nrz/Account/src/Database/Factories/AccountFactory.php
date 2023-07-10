@@ -14,8 +14,8 @@ class AccountFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'=>Arr::random([AccountNameEnum::General->value , AccountNameEnum::GOLD->value , AccountNameEnum::SILVER->value]),
-            'account_number'=>fake()->randomFloat(0,100000,999999),
+            'name'=>Arr::random([AccountNameEnum::GENERAL->value , AccountNameEnum::GOLD->value , AccountNameEnum::SILVER->value]),
+            'account_number'=>fake()->randomFloat(0,100000000,999999999),
             'customer_id'=>Customer::factory(),
             'balance'=>fake()->randomFloat(0,1000,9999999999),
             'bic'=>fake()->randomFloat(0,1000,9999),

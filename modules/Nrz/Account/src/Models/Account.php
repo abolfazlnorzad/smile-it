@@ -13,6 +13,8 @@ class Account extends Model
 {
     use HasFactory ,HasUlids;
 
+    protected $guarded =[];
+
 
     protected static function newFactory()
     {
