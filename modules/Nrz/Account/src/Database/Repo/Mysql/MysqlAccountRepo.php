@@ -3,6 +3,7 @@
 namespace Nrz\Account\Database\Repo\Mysql;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Nrz\Account\Exceptions\CreateAccountException;
 use Nrz\Account\Models\Account;
 
@@ -21,7 +22,8 @@ class MysqlAccountRepo implements \Nrz\Account\Contracts\AccountProviderInterfac
             return $ac;
         }catch (\Exception $e){
             DB::rollBack();
-            throw new CreateAccountException($e->getMessage(),500);
+            Log::error($e->getMessage());
+            throw new CreateAccountException(__("message.internal-server-error"),500);
         }
     }
 
@@ -35,7 +37,8 @@ class MysqlAccountRepo implements \Nrz\Account\Contracts\AccountProviderInterfac
             return !!Account::query()->where("account_number", $number)
                 ->first();
         }catch (\Exception $e){
-            throw new CreateAccountException($e->getMessage(),500);
+            Log::error($e->getMessage());
+            throw new CreateAccountException(__("message.internal-server-error"),500);
         }
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Log;
 use Nrz\Base\Traits\ApiResponse;
 use Throwable;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -82,15 +83,18 @@ class Handler extends ExceptionHandler
         }
 
         if ($e instanceof \Error) {
-            return $this->errorResponse($e->getMessage(), 500);
+            Log::error($e->getMessage());
+            return $this->errorResponse(__('message.internal-server-error'), 500);
         }
 
         if ($e instanceof QueryException) {
-            return $this->errorResponse($e->getMessage(), 500);
+            Log::error($e->getMessage());
+            return $this->errorResponse(__('message.internal-server-error'), 500);
         }
 
         if ($e instanceof RelationNotFoundException) {
-            return $this->errorResponse($e->getMessage(), 500);
+            Log::error($e->getMessage());
+            return $this->errorResponse(__('message.internal-server-error'), 500);
         }
         return parent::render($request, $e);
 
