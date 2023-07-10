@@ -1,0 +1,15 @@
+{
+  "name": "nrz/account",
+  "autoload": {
+    "psr-4": {
+      "Nrz\\Account\\" : "src"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Nrz\\Account\\Providers\\AccountServiceProvider"
+      ]
+    }
+  }
+}
