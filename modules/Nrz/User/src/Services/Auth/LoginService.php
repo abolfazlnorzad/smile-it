@@ -4,6 +4,7 @@ namespace Nrz\User\Services\Auth;
 
 use Illuminate\Support\Facades\Hash;
 use Nrz\User\Contracts\UserProviderInterface;
+use Nrz\User\Exceptions\WrongPasswordException;
 use Nrz\User\Models\User;
 use Nrz\User\Traits\CreateJWTToken;
 
@@ -24,9 +25,6 @@ class LoginService
         // find user
         $user = $this->provider->findUserByEmail($email);
 
-        if (! $user->id)
-            throw new \Exception(__("validation.exists","user"));
-
         // check password
         $this->compareUserPassword($user, $password);
 
@@ -37,9 +35,9 @@ class LoginService
 
     private function compareUserPassword(User $user, string $password)
     {
-        $status =  Hash::check($password, $user->getAuthPassword());
+        $status = Hash::check($password, $user->getAuthPassword());
         if (! $status){
-            throw new \Exception(__("auth.failed"));
+            throw new WrongPasswordException(message: __('validation.exists', ['attribute' => 'email']),code: 422);
         }
 
     }
