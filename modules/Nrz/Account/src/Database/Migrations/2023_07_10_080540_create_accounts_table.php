@@ -15,7 +15,6 @@ return new class extends Migration{
                 ->cascadeOnDelete()->cascadeOnUpdate();
             $table->decimal('balance', 20, 0)->default(0);
             $table->string('bic',7); // Bank Identifier Code
-            $table->unique(['name','customer_id']);
             $table->timestamps();
         });
     }

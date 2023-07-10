@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Nrz\Account\Database\Factories\AccountFactory;
 use Nrz\Account\Enums\AccountNameEnum;
+use Nrz\Customer\Models\Customer;
 
 class Account extends Model
 {
@@ -18,5 +19,10 @@ class Account extends Model
         return new AccountFactory();
     }
     protected $casts =["name"=>AccountNameEnum::class];
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
 
 }

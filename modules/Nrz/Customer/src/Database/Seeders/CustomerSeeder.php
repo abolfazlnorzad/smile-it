@@ -10,6 +10,8 @@ class CustomerSeeder extends Seeder
 
     public function run(): void
     {
-        Customer::factory()->count(1000)->create();
+        Customer::factory()->count(100)
+            ->hasAccounts(rand(1,3))
+            ->create();
     }
 }

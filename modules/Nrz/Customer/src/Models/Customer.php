@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Nrz\Account\Models\Account;
 use Nrz\Customer\Database\Factories\CustomerFactory;
 
 class Customer extends Model
@@ -18,5 +19,10 @@ class Customer extends Model
     protected static function newFactory()
     {
         return new CustomerFactory();
+    }
+
+    public function accounts()
+    {
+        return $this->hasMany(Account::class);
     }
 }
