@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "781c4cf78fa1b6ff41884fe39ff755cd",
+    "content-hash": "1d951be49246c0deb049d1e19c954854",
     "packages": [
         {
             "name": "brick/math",
@@ -2301,6 +2301,31 @@
                 "source": "https://github.com/abolfazlnorzad/laravel-module-creator/tree/master"
             },
             "time": "2023-02-26T17:17:53+00:00"
+        },
+        {
+            "name": "nrz/transaction",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "modules/Nrz/Transaction",
+                "reference": "1db3632fed4c0c29037b2b929c89bd17abe37179"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Nrz\\Transaction\\Providers\\TransactionServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nrz\\Transaction\\": "src"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "nrz/user",
@@ -8099,7 +8124,8 @@
         "nrz/user": 20,
         "nrz/base": 20,
         "nrz/customer": 20,
-        "nrz/account": 20
+        "nrz/account": 20,
+        "nrz/transaction": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

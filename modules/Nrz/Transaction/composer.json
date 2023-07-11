@@ -1,0 +1,15 @@
+{
+  "name": "nrz/transaction",
+  "autoload": {
+    "psr-4": {
+      "Nrz\\Transaction\\" : "src"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Nrz\\Transaction\\Providers\\TransactionServiceProvider"
+      ]
+    }
+  }
+}
