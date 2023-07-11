@@ -10,7 +10,6 @@ return new class extends Migration {
         Schema::create('transactions', function (Blueprint $table) {
             $table->ulid("id")->primary();
             $table->string("type");
-            $table->foreignUlid("transaction_id")->nullable()->constrained("transactions","id")->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignUlid("send_id")->constrained("customers","id")->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignUlid("receiver_id")->constrained("customers","id")->cascadeOnUpdate()->cascadeOnDelete();
             $table->decimal('amount', 20, 0);
