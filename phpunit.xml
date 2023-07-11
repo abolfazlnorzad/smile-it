@@ -17,6 +17,10 @@
         </testsuite>
 
         <testsuite name="Feature">
+            <directory suffix="Test.php">./modules/Nrz/Transaction/src/Tests/Feature</directory>
+        </testsuite>
+
+        <testsuite name="Feature">
             <directory suffix="Test.php">./modules/Nrz/Customer/src/Tests/Feature</directory>
         </testsuite>
 

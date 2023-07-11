@@ -10,8 +10,8 @@ return new class extends Migration {
         Schema::create('transactions', function (Blueprint $table) {
             $table->ulid("id")->primary();
             $table->string("type");
-            $table->foreignUlid("send_id")->constrained("customers","id")->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignUlid("receiver_id")->constrained("customers","id")->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignUlid("sender_id")->constrained("accounts","id")->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignUlid("receiver_id")->constrained("accounts","id")->cascadeOnUpdate()->cascadeOnDelete();
             $table->decimal('amount', 20, 0);
             $table->string('res_number',30)->unique();
             $table->text("description")->nullable();

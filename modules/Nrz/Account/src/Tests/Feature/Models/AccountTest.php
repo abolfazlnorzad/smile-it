@@ -18,4 +18,9 @@ class AccountTest extends TestCase
         $this->assertTrue(isset($account->customer_id));
         $this->assertTrue($account->customer instanceof Customer);
     }
+
+    public function testAccountRelationShipWithTransaction()
+    {
+
+    }
 }

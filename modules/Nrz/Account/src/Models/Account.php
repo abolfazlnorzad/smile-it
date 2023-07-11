@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Nrz\Account\Database\Factories\AccountFactory;
 use Nrz\Account\Enums\AccountNameEnum;
 use Nrz\Customer\Models\Customer;
+use Nrz\Transaction\Models\Transaction;
 
 class Account extends Model
 {
@@ -25,6 +26,11 @@ class Account extends Model
     public function customer()
     {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
     }
 
 }
