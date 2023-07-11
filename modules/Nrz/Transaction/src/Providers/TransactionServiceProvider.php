@@ -1,5 +1,7 @@
 <?php namespace Nrz\Transaction\Providers;
 
+use Illuminate\Support\Facades\Route;
+
 class TransactionServiceProvider extends \Illuminate\Support\ServiceProvider
 {
 
