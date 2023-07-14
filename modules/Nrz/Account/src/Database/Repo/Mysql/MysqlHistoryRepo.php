@@ -19,7 +19,7 @@ class MysqlHistoryRepo implements HistoryProviderInterface
             History::query()->create([
                 'transaction_id' => $transaction->id,
                 'account_id' => $transaction->sender->id,
-                'balance_after_transaction' => $transaction->sender->balance,
+                'balance_after_transaction' => $transaction->sender->balance + $transaction->amount * config('commission.commission_percentage'),
                 'type' => 'withdraw',
                 'amount' => $transaction->amount
             ]);
