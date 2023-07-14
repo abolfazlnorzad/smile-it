@@ -9,4 +9,6 @@ interface AccountProviderInterface
     public function createNewAccount(array $data) :Account;
 
     public function checkAccountNumberIsExist(string|int|float $number) :bool;
+
+    public function updateAccountBalance(Account $account,float|int $newBalance);
 }

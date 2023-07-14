@@ -15,8 +15,8 @@ class TransactionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'sender_account_number'=>['required',Rule::exists('accounts' , 'account_number')],
-            'receiver_account_number'=>['required',Rule::exists('accounts' , 'account_number')],
+            'sender_id'=>['required',Rule::exists('accounts' , 'id')],
+            'receiver_id'=>['required',Rule::exists('accounts' , 'id')],
             'amount'=>['required','numeric','min:5'],
             'description'=>['nullable','string','max:777']
         ];

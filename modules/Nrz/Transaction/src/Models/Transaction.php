@@ -21,18 +21,10 @@ class Transaction extends Model
 
     ];
 
-    protected $casts =[
-        "type"=>TransactionTypeEnum::class
-    ];
 
-    public function parent()
+    public function commission()
     {
-        return $this->belongsTo(Transaction::class,"transaction_id");
-    }
-
-    public function bankCommission()
-    {
-         return $this->hasOne(Transaction::class,"transaction_id");
+         return $this->hasOne(Commission::class,"transaction_id");
     }
 
     public function sender()

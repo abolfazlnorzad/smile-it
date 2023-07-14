@@ -41,4 +41,9 @@ class MysqlAccountRepo implements \Nrz\Account\Contracts\AccountProviderInterfac
             throw new CreateAccountException(__("message.internal-server-error"),500);
         }
     }
+
+    public function updateAccountBalance(Account $account, float|int $newBalance)
+    {
+        $account->updateBalance($newBalance);
+    }
 }

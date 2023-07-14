@@ -33,4 +33,11 @@ class Account extends Model
         return $this->hasMany(Transaction::class);
     }
 
+    public function updateBalance(float|int $newBalance)
+    {
+        return $this->update([
+            'balance' => $newBalance
+        ]);
+    }
+
 }

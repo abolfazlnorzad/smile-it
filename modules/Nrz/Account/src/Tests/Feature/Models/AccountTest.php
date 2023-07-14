@@ -5,6 +5,7 @@ namespace Nrz\Account\Tests\Feature\Models;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Nrz\Account\Models\Account;
 use Nrz\Customer\Models\Customer;
+use Nrz\Transaction\Models\Transaction;
 use Nrz\User\Models\User;
 use Tests\TestCase;
 
@@ -21,6 +22,10 @@ class AccountTest extends TestCase
 
     public function testAccountRelationShipWithTransaction()
     {
-
+       $tr = Transaction::factory()->create();
+       $this->assertTrue($tr->sender instanceof Account);
+       $this->assertTrue($tr->receiver instanceof Account);
+       $this->assertTrue(isset($tr->sender_id));
+       $this->assertTrue(isset($tr->receiver_id));
     }
 }

@@ -26,16 +26,10 @@ class TransactionTest extends TestCase
         $this->assertTrue($t->receiver instanceof Account);
     }
 
-    public function testTransactionHasRelationShipWithParent()
-    {
-        $t = Transaction::factory()->bankCommission()->create();
-        $this->assertTrue(isset($t->transaction_id));
-        $this->assertTrue($t->parent instanceof Transaction);
-    }
 
-    public function testTransactionHasRelationShipWithBankCommission()
-    {
-        $t = Transaction::factory()->hasBankCommission()->create();
-        $this->assertTrue($t->bankCommission instanceof Transaction);
-    }
+//    public function testTransactionHasRelationShipWithBankCommission()
+//    {
+//        $t = Transaction::factory()->hasBankCommission()->create();
+//        $this->assertTrue($t->bankCommission instanceof Transaction);
+//    }
 }
