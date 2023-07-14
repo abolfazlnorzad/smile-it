@@ -31,6 +31,7 @@ class AccountController extends ApiController
     public function show(Account $account)
     {
         $account->load('histories');
-        return new AccountResource($account);
+
+        return $this->successResponse(new AccountResource($account) , 200,__('message.success'));
     }
 }

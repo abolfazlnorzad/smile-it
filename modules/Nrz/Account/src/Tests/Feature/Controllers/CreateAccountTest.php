@@ -7,6 +7,7 @@ use Illuminate\Support\Arr;
 use Nrz\Account\Enums\AccountNameEnum;
 use Nrz\Account\Models\Account;
 use Nrz\Customer\Models\Customer;
+use Nrz\Transaction\Models\Transaction;
 use Nrz\User\Models\User;
 use Tests\TestCase;
 
@@ -412,5 +413,51 @@ class CreateAccountTest extends TestCase
                 "status" => 'error',
             ]
         );
+    }
+
+    public function testStaffCanSeeHistoryOfAccount()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+        $account = Account::factory()->create();
+        $tr = Transaction::query()->create([
+            'sender_id' => Account::factory()->create()->id,
+            'receiver_id' => $account->id,
+            'amount' => 7,
+            'res_number' => mt_rand(),
+        ]);
+        $account->histories()->create([
+            'amount'=>7,
+            'balance_after_transaction' =>$account->balance,
+            'type'=>'deposit',
+            'transaction_id'=>$tr->id
+        ]);
+        $res = $this->getJson(route('account.show',$account->account_number))
+        ->assertOk();
+        $res->assertJson([
+            "status"=>"success",
+            'message'=>__('message.success'),
+            'data'=>[
+                'name'=>$account->name->value,
+                'account_number'=>$account->account_number,
+                'customer'=>[
+                    'name'=>$account->customer->name,
+                    'phone_number'=>$account->customer->phone_number,
+                    'national_code'=>$account->customer->national_code,
+                    'zip_code'=>$account->customer->zip_code,
+                    'address'=>$account->customer->address,
+                ],
+                'balance'=>number_format(Account::find($account->id)->balance),
+                'histories'=>[
+                    [
+                        'description'=>$account->histories()->first()->description,
+                        'is_commission'=>$account->histories()->first()->is_commission,
+                        'amount'=>$account->histories()->first()->amount,
+                        'type'=>$account->histories()->first()->type,
+                        'balance_after_transaction'=>number_format($account->histories()->first()->balance_after_transaction),
+                    ]
+                ]
+            ]
+        ]);
     }
 }
