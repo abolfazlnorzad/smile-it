@@ -9,6 +9,7 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
+        User::factory()->state(['email'=>'smile@it.com'])->create();
         User::factory()->count(100)->create();
     }
 }

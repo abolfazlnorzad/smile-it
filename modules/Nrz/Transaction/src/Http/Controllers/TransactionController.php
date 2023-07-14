@@ -18,6 +18,7 @@ class TransactionController extends ApiController
 
     public function store(TransactionRequest $request)
     {
+
         try {
            $resNumber =  $this->service->storeTransaction($request->validated());
            return $this->successResponse([

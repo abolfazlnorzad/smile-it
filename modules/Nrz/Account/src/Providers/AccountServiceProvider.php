@@ -7,6 +7,7 @@ use Nrz\Account\Contracts\HistoryProviderInterface;
 use Nrz\Account\Database\Repo\Mysql\MysqlAccountRepo;
 use Nrz\Account\Database\Repo\Mysql\MysqlHistoryRepo;
 use Nrz\Account\Database\Seeders\AccountSeeder;
+use Nrz\Account\Database\Seeders\HistorySeeder;
 
 class AccountServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -17,6 +18,7 @@ class AccountServiceProvider extends \Illuminate\Support\ServiceProvider
         Route::middleware('api')
             ->group(__DIR__ . '/../Routes/routes.php');
         DatabaseSeeder::$seeders[] = AccountSeeder::class;
+//        DatabaseSeeder::$seeders[] = HistorySeeder::class;
         $this->app->bindIf(AccountProviderInterface::class , MysqlAccountRepo::class);
         $this->app->bindIf(HistoryProviderInterface::class , MysqlHistoryRepo::class);
     }

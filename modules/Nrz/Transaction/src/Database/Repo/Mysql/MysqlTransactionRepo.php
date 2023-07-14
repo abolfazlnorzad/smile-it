@@ -16,7 +16,7 @@ class MysqlTransactionRepo implements TransactionProviderInterface
                 'amount' => $data['amount'],
                 'sender_id' => $data['sender_id'],
                 'receiver_id' => $data['receiver_id'],
-                'description'=>$data['description'],
+                'description'=>$data['description'] ?? null,
                 'res_number' => mt_rand(100000000,999999999999),
 
             ]);

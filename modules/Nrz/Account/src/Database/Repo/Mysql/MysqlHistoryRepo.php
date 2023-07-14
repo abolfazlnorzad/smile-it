@@ -30,7 +30,8 @@ class MysqlHistoryRepo implements HistoryProviderInterface
                 'balance_after_transaction' => $transaction->sender->balance,
                 'type' => 'withdraw',
                 'amount' => $transaction->amount * config('commission.commission_percentage'),
-                'description'=>''
+                'description'=>'commission',
+                'is_commission'=>true
             ]);
 
             History::query()->create([

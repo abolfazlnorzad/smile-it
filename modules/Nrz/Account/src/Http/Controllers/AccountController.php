@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Nrz\Account\Exceptions\CreateAccountException;
 use Nrz\Account\Http\Requests\CreateAccountRequest;
+use Nrz\Account\Http\Resources\AccountResource;
 use Nrz\Account\Models\Account;
 use Nrz\Account\Services\AccountService;
 use Nrz\Base\Http\Controllers\ApiController;
@@ -29,6 +30,7 @@ class AccountController extends ApiController
 
     public function show(Account $account)
     {
-
+        $account->load('histories');
+        return new AccountResource($account);
     }
 }

@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->decimal('balance_after_transaction', 20, 0)->default(0);
             $table->enum("type",["deposit","withdraw"]);
             $table->string('description')->nullable();
+            $table->boolean('is_commission')->default(false);
             $table->timestamps();
         });
     }
