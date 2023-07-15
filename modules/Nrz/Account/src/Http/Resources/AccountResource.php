@@ -17,7 +17,6 @@ class AccountResource extends JsonResource
             'customer'=>new CustomerResource($this->customer),
             'balance'=>number_format($this->balance),
             'bic'=>$this->bic,
-            'histories'=>HistoryResource::collection($this->histories()->latest()->paginate(15)),
         ];
     }
 }

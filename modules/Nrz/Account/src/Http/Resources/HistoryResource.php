@@ -17,6 +17,7 @@ class HistoryResource extends JsonResource
             'type'=>$this->type,
             'description'=>$this->description,
             'is_commission'=>$this->is_commission,
+            'transaction'=>new TransactionResource($this->transaction)
         ];
     }
 }

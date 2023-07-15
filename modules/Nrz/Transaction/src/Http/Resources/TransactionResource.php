@@ -14,7 +14,9 @@ class TransactionResource extends JsonResource
             'amount'=>number_format($this->amount),
             'res_number'=>$this->res_number,
             'description'=>$this->description,
-            'commission'=>$this->commission,
+            'sender_account_number'=>$this->sender->account_number,
+            'receiver_account_number'=>$this->receiver->account_number,
+            'created_at'=>$this->created_at
         ];
     }
 }
