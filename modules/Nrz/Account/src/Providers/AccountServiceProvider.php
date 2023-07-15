@@ -8,6 +8,7 @@ use Nrz\Account\Database\Repo\Mysql\MysqlAccountRepo;
 use Nrz\Account\Database\Repo\Mysql\MysqlHistoryRepo;
 use Nrz\Account\Database\Seeders\AccountSeeder;
 use Nrz\Account\Database\Seeders\HistorySeeder;
+use Nrz\Account\Services\AccountService;
 
 class AccountServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -21,6 +22,9 @@ class AccountServiceProvider extends \Illuminate\Support\ServiceProvider
 //        DatabaseSeeder::$seeders[] = HistorySeeder::class;
         $this->app->bindIf(AccountProviderInterface::class , MysqlAccountRepo::class);
         $this->app->bindIf(HistoryProviderInterface::class , MysqlHistoryRepo::class);
+        $this->app->singleton('accountService',function (){
+            return new AccountService(new MysqlAccountRepo() , new MysqlHistoryRepo());
+        });
     }
 
     public function boot()

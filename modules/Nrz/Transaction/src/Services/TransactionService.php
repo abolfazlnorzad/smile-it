@@ -4,7 +4,7 @@ namespace Nrz\Transaction\Services;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Nrz\Account\Services\AccountService;
+use Nrz\Account\Facades\Account;
 use Nrz\Transaction\Contracts\CommissionProviderInterface;
 use Nrz\Transaction\Contracts\TransactionProviderInterface;
 use Nrz\Transaction\Exceptions\TransactionException;
@@ -12,7 +12,7 @@ use Nrz\Transaction\Models\Transaction;
 
 class TransactionService
 {
-    public function __construct(public TransactionProviderInterface $transactionProvider , public CommissionProviderInterface $commissionProvider,public AccountService $accountService)
+    public function __construct(public TransactionProviderInterface $transactionProvider , public CommissionProviderInterface $commissionProvider)
     {
 
     }
@@ -41,12 +41,12 @@ class TransactionService
 
     private function updateAccountsBalance(Transaction $transaction)
     {
-        $this->accountService->updateAccountBalance($transaction->receiver , $transaction->receiver->balance + $transaction->amount);
-        $this->accountService->updateAccountBalance($transaction->sender , $transaction->sender->balance - ($transaction->amount + $transaction->commission->amount));
+        Account::updateAccountBalance($transaction->receiver , $transaction->receiver->balance + $transaction->amount);
+        Account::updateAccountBalance($transaction->sender , $transaction->sender->balance - ($transaction->amount + $transaction->commission->amount));
     }
 
     private function createAccountHistory(Transaction $tr)
     {
-        $this->accountService->storeHistoryForTransaction($tr);
+        Account::storeHistoryForTransaction($tr);
     }
 }

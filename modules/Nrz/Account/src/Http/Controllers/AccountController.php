@@ -13,14 +13,11 @@ use Nrz\Base\Http\Controllers\ApiController;
 
 class AccountController extends ApiController
 {
-    public function __construct(public AccountService $service)
-    {
-    }
 
     public function create(CreateAccountRequest $request)
     {
         try {
-            $this->service->createAccount($request->validated());
+            \Nrz\Account\Facades\Account::createAccount($request->validated());
             return $this->successResponse(null, 200, __("messages.success"));
         } catch (CreateAccountException $e) {
             return  $e->render();
