@@ -8,6 +8,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Nrz\Base\Traits\ApiResponse;
+use Nrz\Transaction\Rules\CheckAmountRule;
 
 class TransactionRequest extends FormRequest
 {
@@ -17,7 +18,7 @@ class TransactionRequest extends FormRequest
         return [
             'sender_id'=>['required',Rule::exists('accounts' , 'id')],
             'receiver_id'=>['required',Rule::exists('accounts' , 'id')],
-            'amount'=>['required','numeric','min:5'],
+            'amount'=>['required','numeric','min:5',new CheckAmountRule()],
             'description'=>['nullable','string','max:777']
         ];
     }
