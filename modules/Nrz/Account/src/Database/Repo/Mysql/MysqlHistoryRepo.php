@@ -5,6 +5,7 @@ namespace Nrz\Account\Database\Repo\Mysql;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Nrz\Account\Contracts\HistoryProviderInterface;
+use Nrz\Account\Exceptions\CreateAccountException;
 use Nrz\Account\Models\History;
 use Nrz\Transaction\Models\Transaction;
 
@@ -46,8 +47,8 @@ class MysqlHistoryRepo implements HistoryProviderInterface
             DB::commit();
         }catch (\Throwable $e){
             DB::rollBack();
-            // todo handle error
             Log::error($e->getMessage());
+            throw new CreateAccountException(__('message.internal-server-error'),500);
         }
     }
 }
