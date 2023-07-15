@@ -4,7 +4,6 @@ namespace Nrz\Transaction\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Nrz\Account\Http\Resources\AccountResource;
 
 class TransactionResource extends JsonResource
 {

@@ -3,11 +3,9 @@
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Laravel\Sanctum\Sanctum;
 use Nrz\User\Contracts\UserProviderInterface;
-use Nrz\User\Database\Seeders\UserSeeder;
 use Nrz\User\Database\Repo\Mysql\MysqlUserProvider;
-use Nrz\User\Models\PersonalAccessToken;
+use Nrz\User\Database\Seeders\UserSeeder;
 
 class UserServiceProvider extends ServiceProvider
 {

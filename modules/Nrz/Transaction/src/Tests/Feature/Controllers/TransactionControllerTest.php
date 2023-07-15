@@ -2,7 +2,6 @@
 
 namespace Nrz\Transaction\Tests\Feature\Controllers;
 
-use http\Client\Curl\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Nrz\Account\Models\Account;
 use Nrz\Account\Models\History;

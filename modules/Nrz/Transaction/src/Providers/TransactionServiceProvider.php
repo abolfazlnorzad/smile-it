@@ -2,8 +2,6 @@
 
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Support\Facades\Route;
-use Nrz\Account\Contracts\HistoryProviderInterface;
-use Nrz\Account\Database\Repo\Mysql\MysqlHistoryRepo;
 use Nrz\Transaction\Contracts\CommissionProviderInterface;
 use Nrz\Transaction\Contracts\TransactionProviderInterface;
 use Nrz\Transaction\Database\Repo\Mysql\MysqlCommissionRepo;

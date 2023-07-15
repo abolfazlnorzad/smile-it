@@ -4,7 +4,6 @@ namespace Nrz\Transaction\Tests\Feature\Models;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Nrz\Account\Models\Account;
-use Nrz\Customer\Models\Customer;
 use Nrz\Transaction\Models\Transaction;
 use Tests\TestCase;
 

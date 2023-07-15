@@ -6,7 +6,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Nrz\Account\Models\Account;
 use Nrz\Customer\Models\Customer;
 use Nrz\Transaction\Models\Transaction;
-use Nrz\User\Models\User;
 use Tests\TestCase;
 
 class AccountTest extends TestCase

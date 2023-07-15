@@ -2,12 +2,10 @@
 
 namespace Nrz\Transaction\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Nrz\Base\Http\Controllers\ApiController;
 use Nrz\Transaction\Exceptions\TransactionException;
 use Nrz\Transaction\Http\Requests\TransactionRequest;
 use Nrz\Transaction\Services\TransactionService;
-use function Termwind\renderUsing;
 
 class TransactionController extends ApiController
 {

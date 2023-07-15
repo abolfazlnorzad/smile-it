@@ -5,7 +5,6 @@ namespace Nrz\Account\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Nrz\Transaction\Http\Resources\TransactionResource;
-use Nrz\Transaction\Models\Transaction;
 
 class HistoryResource extends JsonResource
 {

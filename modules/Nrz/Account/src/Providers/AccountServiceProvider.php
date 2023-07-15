@@ -7,7 +7,6 @@ use Nrz\Account\Contracts\HistoryProviderInterface;
 use Nrz\Account\Database\Repo\Mysql\MysqlAccountRepo;
 use Nrz\Account\Database\Repo\Mysql\MysqlHistoryRepo;
 use Nrz\Account\Database\Seeders\AccountSeeder;
-use Nrz\Account\Database\Seeders\HistorySeeder;
 use Nrz\Account\Services\AccountService;
 
 class AccountServiceProvider extends \Illuminate\Support\ServiceProvider
