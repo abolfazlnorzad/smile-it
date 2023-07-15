@@ -9,5 +9,6 @@ return [
     "authentication-exception"=>"authentication exception",
     "validation-exception" => 'validation exception',
     "ParseError" => 'ParseError',
-    'internal-server-error'=>'internal server error'
+    'internal-server-error'=>'internal server error',
+    'success'=>'success',
 ];

@@ -38,5 +38,15 @@ class TransactionControllerTest extends TestCase
         $this->assertCount(3,History::all());
         $hc = History::query()->where('amount' , $bankCommission)->get();
         $this->assertCount(1 , $hc);
+        $resNumber = Transaction::first()->res_number;
+        $res->assertJson(
+            [
+                "message" => __('message.success'),
+                "status" => 'success',
+                "data" => [
+                    'result number'=>$resNumber
+                ]
+            ]
+        );
     }
 }

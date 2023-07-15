@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Log;
 use Nrz\Account\Services\AccountService;
 use Nrz\Transaction\Contracts\CommissionProviderInterface;
 use Nrz\Transaction\Contracts\TransactionProviderInterface;
+use Nrz\Transaction\Exceptions\TransactionException;
 use Nrz\Transaction\Models\Transaction;
 
 class TransactionService
@@ -27,7 +28,7 @@ class TransactionService
         }catch (\Throwable $e){
             DB::rollBack();
             Log::error($e->getMessage());
-
+            throw new TransactionException(__('message.internal-server-error'),500);
         }
         return $tr->res_number;
 
